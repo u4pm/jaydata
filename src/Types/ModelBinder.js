@@ -302,12 +302,16 @@ $data.Class.define('$data.ModelBinder', null, null, {
                     }
                     if (isEntityType) {
                         context.src += item + ' =  (typeof ov !== "undefined" && ov) || new (Container.resolveByIndex(' + typeIndex + '))(undefined, { setDefaultValues: false });';
+                    } else if (isEnum && context.forEach) {
+                        context.src += item + ' = Container.resolveByIndex(' + typeIndex + ')[di];';
                     } else if (isEnum) {
                         context.src += item + ' = Container.resolveByIndex(' + typeIndex + ')[di["' + context.current + '"]];';
                     } else {
                         context.src += item + ' = new (Container.resolveByIndex(' + typeIndex + '))();';
                     }
-                    if (resolvedType.inheritedTo){ context.src += '}'; }
+                    if (resolvedType.inheritedTo) {
+                        context.src += '}';
+                    }
                 }
             }
             var openTypeProperty = null;
