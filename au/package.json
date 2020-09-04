@@ -6,7 +6,7 @@
     "start": "node app"
   },
   "dependencies": {
-    "mongodb": "1.0.x",
+    "mongodb": "3.6.x",
     "passport": "0.1.x",
     "passport-local": "0.1.x",
     "passport-http": "0.1.x",
